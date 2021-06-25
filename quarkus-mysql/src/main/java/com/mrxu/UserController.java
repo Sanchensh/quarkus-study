@@ -8,6 +8,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 /**
  * @author jlxu@telenav.cn
@@ -24,5 +25,13 @@ public class UserController {
     public String addUser(){
         repository.createUser();
         return "ok";
+    }
+
+    @GET
+    @Path("/find")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<User> findUser(){
+        List<User> users = repository.findAll();
+        return users;
     }
 }
